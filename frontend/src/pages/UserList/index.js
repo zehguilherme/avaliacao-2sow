@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import Table from '../../components/Table';
 import { Container } from './styles';
 import { LogoutButton } from '../../components/LogoutButton';
+import { TableStyles } from '../../components/Table/styles';
 
 export default function UserList () {
 
@@ -16,7 +17,7 @@ export default function UserList () {
 
   // Chamar a api e definir o dados
   useEffect(() => {
-    api.get('user-list')
+    api.get('usuarios')
       .then(response => {
         setData(response.data)
       })
@@ -25,21 +26,25 @@ export default function UserList () {
   const columns = useMemo(
     () => [
       {
-        Header: "Usuários",
+        Header: "Listagem de Usuários",
 
         columns: [
           {
+            Header: "Nome",
+            accessor: "nome"
+          },
+          {
             Header: "CPF",
-            accessor: "api.cpf"
+            accessor: "cpf"
           },
           {
             Header: "E-mail",
-            accessor: "api.email"
+            accessor: "email"
           },
           {
             Header: "Cidade",
-            accessor: "api.cidade"
-          }
+            accessor: "endereco.cidade"
+          },
         ]
       }
     ],
@@ -62,10 +67,9 @@ export default function UserList () {
       </div>
 
       <div className="list-container">
-        <h1>Listagem de usuários</h1>
-
-        <Table columns={columns} data={data} />
-
+        <TableStyles>
+          <Table columns={columns} data={data} />
+        </TableStyles>
       </div>
     </Container>
   )
