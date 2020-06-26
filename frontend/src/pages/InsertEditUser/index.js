@@ -41,11 +41,11 @@ export default function InsertEditUser () {
 
       if ((usuario.length >= 1) &&
         (dominio.length >= 3) &&
-        (usuario.search("@") == -1) &&  //usuário não pode conter o @
-        (dominio.search("@") == -1) &&  //domínio não pode conter o @
-        (usuario.search(" ") == -1) &&  //usuário não pode conter o “ ” espaço em branco
-        (dominio.search(" ") == -1) &&  //domínio não pode conter o “ ” espaço em branco
-        (dominio.search(".") != -1) &&  //domínio tem que possuir “.” ponto
+        (usuario.search("@") === -1) &&  //usuário não pode conter o @
+        (dominio.search("@") === -1) &&  //domínio não pode conter o @
+        (usuario.search(" ") === -1) &&  //usuário não pode conter o “ ” espaço em branco
+        (dominio.search(" ") === -1) &&  //domínio não pode conter o “ ” espaço em branco
+        (dominio.search(".") !== -1) &&  //domínio tem que possuir “.” ponto
         (dominio.indexOf(".") >= 1) &&  //a posição do 1º ponto tem que ser maior ou igual a 1, lembrando, a posição 0 deve ser ocupado por algum caracter após o @.
 
         //a posição do último ponto tem que ser menor que o ultimo caracter, deve ser finalizado o domínio por um caracter
