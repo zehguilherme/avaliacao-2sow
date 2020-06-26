@@ -33,6 +33,29 @@ export default function InsertEditUser () {
   async function handleRegister (e) {
     e.preventDefault(); //vai previnir o comportamento padrão do form (recarregar página toda)
 
+    // Verificação de e-mail
+    if (email !== '') {
+      const usuario = email.substring(0, email.indexOf('@')); //parte do e-mail antes do @
+
+      const dominio = email.substring(email.indexOf('@') + 1, email.length); //parte do e-mail depois do @
+
+      if ((usuario.length >= 1) &&
+        (dominio.length >= 3) &&
+        (usuario.search("@") == -1) &&  //usuário não pode conter o @
+        (dominio.search("@") == -1) &&  //domínio não pode conter o @
+        (usuario.search(" ") == -1) &&  //usuário não pode conter o “ ” espaço em branco
+        (dominio.search(" ") == -1) &&  //domínio não pode conter o “ ” espaço em branco
+        (dominio.search(".") != -1) &&  //domínio tem que possuir “.” ponto
+        (dominio.indexOf(".") >= 1) &&  //a posição do 1º ponto tem que ser maior ou igual a 1, lembrando, a posição 0 deve ser ocupado por algum caracter após o @.
+
+        //a posição do último ponto tem que ser menor que o ultimo caracter, deve ser finalizado o domínio por um caracter
+        (dominio.lastIndexOf(".") < dominio.length - 1)) {
+      } else {
+        alert('E-mail inválido');
+        return;
+      }
+    }
+
     const data = {
       nome,
       cpf,
