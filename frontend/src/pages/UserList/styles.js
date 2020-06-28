@@ -5,15 +5,17 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 
-  .logout {
-    display: flex;
+   .logout {
+     display: flex;
+     justify-content: flex-end;
+     width: 50%;
   }
 
   .list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 120px;
   }
 `

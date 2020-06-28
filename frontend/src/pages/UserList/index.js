@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Table from '../../components/Table';
 import { Container } from './styles';
-import { LogoutButton } from '../../components/LogoutButton';
 import { TableStyles } from '../../components/Table/styles';
+import { Button } from 'semantic-ui-react';
 
 export default function UserList () {
 
@@ -57,20 +57,22 @@ export default function UserList () {
   }
 
   return (
-    <Container>
+    <>
       <Navbar />
+      <Container>
 
-      <div className="logout">
-        <LogoutButton onClick={handleLogout}>
-          Logout
-        </LogoutButton>
-      </div>
+        <div className="logout">
+          <Button color="red" onClick={handleLogout}>
+            Logout
+          </Button>
+        </div>
 
-      <div className="list-container">
-        <TableStyles>
-          <Table columns={columns} data={data} />
-        </TableStyles>
-      </div>
-    </Container>
+        <div className="list-container">
+          <TableStyles>
+            <Table columns={columns} data={data} />
+          </TableStyles>
+        </div>
+      </Container>
+    </>
   )
 }
