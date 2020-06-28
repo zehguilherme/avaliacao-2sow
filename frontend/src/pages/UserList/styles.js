@@ -5,12 +5,20 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-top: 113px;
 
    .logout {
-     display: flex;
-     justify-content: flex-end;
-     width: 50%;
+     width: 100%;
+     position: relative;
+     left: 69%;
+  }
+
+  @media (max-width: 442px) {
+    .logout {
+      position: unset;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .list-container {
