@@ -17,8 +17,33 @@ export const Container = styled.div`
     font-size: 30px;
   }
 
+  @media (max-width: 685px) {
+    h1 {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 614px) {
+    h1 {
+      font-size: 17px;
+    }
+  }
+
+  @media (max-width: 566px) {
+    h1 {
+      display: none;
+    }
+  }
+
   .buttons {
     display: flex;
+  }
+
+  @media (max-width: 320px) {
+    .buttons {
+      margin-right: 17px;
+      margin-left: 17px;
+    }
   }
 
   .buttons a {
@@ -34,6 +59,13 @@ export const Container = styled.div`
     padding-right: 20px;
     padding-left: 20px;
     transition: background-color 0.8s;
+  }
+
+  @media (max-width: 614px) {
+    .buttons a {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
   }
 
   .buttons a:hover {
