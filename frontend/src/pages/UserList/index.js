@@ -53,7 +53,9 @@ export default function UserList () {
 
   // Realiza o Logout do usuário, enviando-o para a tela de Login
   function handleLogout () {
-    history.push('/');
+    localStorage.clear()  //limpar todos os dados do localstore (salvos no navegador)
+
+    history.push('/'); //envia para página de login
   }
 
   return (
