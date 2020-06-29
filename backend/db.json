@@ -1,3 +1,46 @@
 {
-  "usuarios": []
+  "usuarios": [
+    {
+      "nome": "Teste 1",
+      "cpf": "213.123.123-45",
+      "email": "teste@teste.com",
+      "senha": "12345",
+      "endereco": {
+        "cep": "13454-000",
+        "rua": "rua talvez",
+        "numero": "785",
+        "bairro": "bairro azu",
+        "cidade": "cidade eterna"
+      },
+      "id": 1
+    },
+    {
+      "nome": "Teste 2",
+      "cpf": "213.123.123-45",
+      "email": "email@email.com",
+      "senha": "12345",
+      "endereco": {
+        "cep": "13454-000",
+        "rua": "rua talvez",
+        "numero": "785",
+        "bairro": "bairro azu",
+        "cidade": "cidade eterna"
+      },
+      "id": 2
+    },
+    {
+      "nome": "Teste 3",
+      "cpf": "444.444.444-44",
+      "email": "jgtomaine@hotmail.com",
+      "senha": "12345",
+      "endereco": {
+        "cep": "17012-631",
+        "rua": "Rua Engenheiro Alpheu José Ribas Sampaio",
+        "numero": "2154",
+        "bairro": "Jardim Infante Dom Henrique",
+        "cidade": "Bauru"
+      },
+      "id": 3
+    }
+  ]
 }
