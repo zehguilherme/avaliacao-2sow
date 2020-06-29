@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 
 export const TableStyles = styled.div`
+  /* Input Filtrar por nome */
+  .ui.input {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 442px) {
+    .ui.input {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
   padding: 1rem;
 
   table {

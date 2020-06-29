@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useTable, useFilters } from 'react-table';
 
+import { Input } from 'semantic-ui-react';
+
 export default function Table ({ columns, data }) {
   // Enviar as colunas e dados para montar a tabela
 
@@ -26,12 +28,13 @@ export default function Table ({ columns, data }) {
     columns,
     data
   },
-    useFilters
+    useFilters,
   );
 
   return (
     <>
-      <input
+      <Input
+        icon="search"
         type="text"
         value={filterInput}
         onChange={handleFilterChange}
