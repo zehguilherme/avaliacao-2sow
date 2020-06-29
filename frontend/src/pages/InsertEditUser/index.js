@@ -4,8 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import { Container } from './styles';
-import { Input } from '../../components/Input';
-import { LogoutButton } from '../../components/LogoutButton';
+import { Form, Button } from 'semantic-ui-react';
 
 import api from '../../services/api'; //json-server
 import cepApi from '../../services/cepApi'; //API da ViaCEP
@@ -16,6 +15,7 @@ export default function InsertEditUser () {
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [cep, setCep] = useState('');
   const [rua, setRua] = useState('');
   const [numero, setNumero] = useState('');
@@ -26,7 +26,9 @@ export default function InsertEditUser () {
 
   // Realiza o Logout - leva o usuário de volta para a tela de login
   function handleLogout () {
-    history.push('/');
+    localStorage.clear()  //limpar todos os dados do localstore (salvos no navegador)
+
+    history.push('/'); //envia usuário para tela de login
   }
 
   // Realiza o cadastro de um novo usuário
@@ -56,10 +58,25 @@ export default function InsertEditUser () {
       }
     }
 
+    // Verificação de senha
+    if (senha !== '') {
+      // Ver se ela tem mais de 4 caracteres
+      if (senha.length <= 4) {
+        alert('Senha inválida! Deve ter mais de 4 caracteres');
+
+        // Coloca foco no input Senha
+        const senhaInput = document.querySelector('input#senha');
+        senhaInput.focus();
+
+        return;
+      }
+    }
+
     const data = {
       nome,
       cpf,
       email,
+      senha,
       endereco: {
         cep,
         rua,
@@ -74,6 +91,8 @@ export default function InsertEditUser () {
       await api.post('/usuarios', data); //Insere os dados dos inputs (data) dentro da rota post
 
       alert('Cadastro realizado');
+
+      history.push('/');
 
     } catch (error) {
       alert('Erro no cadastro, tente novamente');
@@ -103,144 +122,156 @@ export default function InsertEditUser () {
       setBairro(response.data.bairro);
       setCidade(response.data.localidade);
 
+      // Após o preenchimento dos campos (caso o CEP esteja correto) é colocado foco no campo "Número
+      const numberInput = document.querySelector('input#numero');
+      numberInput.focus();
+
     } catch (error) {
       alert("CEP inválido, digite outro");
     }
   }
 
   return (
-    <Container>
+    <>
       <Navbar />
+      <Container>
 
-      <div className="logout">
-        <LogoutButton onClick={handleLogout}>
-          Logout
-        </LogoutButton>
-      </div>
+        <div className="logout">
+          <Button color="red" onClick={handleLogout}>
+            Logout
+          </Button>
+        </div>
 
-      <div className="form">
+        <div className="form">
 
-        <h1>Cadastro de usuário</h1>
+          <h1>Cadastro de usuário</h1>
 
-        <form onSubmit={handleRegister}>
-          <div className="nome">
-            <label htmlFor="">Nome</label>
-            <Input
+          <Form onSubmit={handleRegister}>
+            <Form.Input
+              fluid label="Nome"
               type="text"
               name="nome"
               id="nome"
               required={true}
               value={nome}
+              autoFocus
               onChange={e => setNome(e.target.value)}
             />
-          </div>
 
-          <div className="cpf">
-            <label htmlFor="">CPF</label>
-            <Input
-              type="text"
-              name="cpf"
-              id="cpf"
-              required={true}
-              value={cpf}
-              placeholder="999.999.999-99"
-              onChange={
-                e => setCpf(
-                  mask(
-                    unMask(e.target.value), ['999.999.999-99']
+            <Form.Group inline widths="equal">
+              <Form.Input
+                fluid label="CPF"
+                type="text"
+                name="cpf"
+                id="cpf"
+                required={true}
+                value={cpf}
+                placeholder="999.999.999-99"
+                onChange={
+                  e => setCpf(
+                    mask(
+                      unMask(e.target.value), ['999.999.999-99']
+                    )
                   )
-                )
-              }
-            />
-          </div>
+                }
+              />
 
-          <div className="email">
-            <label htmlFor="">E-mail</label>
-            <Input
-              type="email"
-              name="email"
-              id="email"
-              required={true}
-              value={email}
-              placeholder="email@email.com"
-              onChange={e => setEmail(e.target.value)}
-            />
-          </div>
+              <Form.Input
+                fluid label="E-mail"
+                icon="mail"
+                iconPosition="left"
+                type="email"
+                name="email"
+                id="email"
+                required={true}
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-          <div className="cep">
-            <label htmlFor="">CEP</label>
-            <Input
-              type="text"
-              name="cep"
-              id="cep"
-              required={true}
-              value={cep}
-              onBlur={searchCEP} //executa quando sai do input
-              placeholder="99999-999"
-              onChange={
-                e => setCep(
-                  mask(
-                    unMask(e.target.value), ['99999-999']
+            <Form.Group inline widths="equal">
+              <Form.Input
+                fluid label="Senha"
+                icon="lock"
+                iconPosition="left"
+                type="password"
+                name="senha"
+                id="senha"
+                required={true}
+                value={senha}
+                onChange={e => setSenha(e.target.value)}
+              />
+
+              <Form.Input
+                fluid label="CEP"
+                type="text"
+                name="cep"
+                id="cep"
+                required={true}
+                value={cep}
+                onBlur={searchCEP} //executa quando sai do Form.Input
+                placeholder="99999-999"
+                onChange={
+                  e => setCep(
+                    mask(
+                      unMask(e.target.value), ['99999-999']
+                    )
                   )
-                )
-              }
-            />
-          </div>
+                }
+              />
+            </Form.Group>
 
-          <div className="rua">
-            <label htmlFor="">Rua</label>
-            <Input
-              type="text"
-              name="rua"
-              id="rua"
-              required={true}
-              value={rua}
-              onChange={e => setRua(e.target.value)}
-            />
-          </div>
+            <Form.Group inline widths="equal">
+              <Form.Input
+                fluid label="Rua"
+                type="text"
+                name="rua"
+                id="rua"
+                required={true}
+                value={rua}
+                onChange={e => setRua(e.target.value)}
+              />
 
-          <div className="numero">
-            <label htmlFor="">Número</label>
-            <Input
-              type="number"
-              name="numero"
-              id="numero"
-              required={true}
-              value={numero}
-              onChange={e => setNumero(e.target.value)}
-            />
-          </div>
+              <Form.Input
+                fluid label="Número"
+                type="number"
+                name="numero"
+                id="numero"
+                required={true}
+                value={numero}
+                onChange={e => setNumero(e.target.value)}
+              />
+            </Form.Group>
 
-          <div className="bairro">
-            <label htmlFor="">Bairro</label>
-            <Input
-              type="text"
-              name="bairro"
-              id="bairro"
-              required={true}
-              value={bairro}
-              onChange={e => setBairro(e.target.value)}
-            />
-          </div>
+            <Form.Group inline widths="equal">
+              <Form.Input
+                fluid label="Bairro"
+                type="text"
+                name="bairro"
+                id="bairro"
+                required={true}
+                value={bairro}
+                onChange={e => setBairro(e.target.value)}
+              />
 
-          <div className="cidade">
-            <label htmlFor="">Cidade</label>
-            <Input
-              type="text"
-              name="cidade"
-              id="cidade"
-              required={true}
-              value={cidade}
-              onChange={e => setCidade(e.target.value)}
-            />
-          </div>
+              <Form.Input
+                fluid label="Cidade"
+                type="text"
+                name="cidade"
+                id="cidade"
+                required={true}
+                value={cidade}
+                onChange={e => setCidade(e.target.value)}
+              />
+            </Form.Group>
 
-          <div className="buttons">
-            <button id="cadastrar" type="submit">Cadastrar</button>
-            <button id="editar">Editar</button>
-          </div>
-        </form>
-      </div>
-    </Container>
+            <div className="buttons">
+              <button id="cadastrar" type="submit">Cadastrar</button>
+              <button id="editar">Editar</button>
+            </div>
+          </Form>
+        </div>
+      </Container>
+    </>
   )
 }

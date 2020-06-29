@@ -2,19 +2,46 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  margin-top: 40px;
+  height: 100vh;
+
+  @media (max-width: 767px) {
+    margin-top: 247px;
+  }
+
+  @media (max-width: 320px) and (max-height: 568px) {
+    margin-top: 371px;
+  }
 
   .logout {
-    justify-content: flex-end;
+    width: 100%;
+    position: relative;
+    left: 69%;
+    padding-top: 43px;
+  }
+
+  @media (max-width: 767px) {
+    .logout {
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .logout {
+      position: unset;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .form {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
     align-items: center;
+    margin-top: 20px;
   }
 
   .form h1 {
@@ -23,7 +50,14 @@ export const Container = styled.div`
     font-weight: 600;
   }
 
-  .form form {
+  @media (max-width: 400px) {
+    .form h1 {
+    font-size: 30px;
+    font-weight: 300;
+    }
+  }
+
+  .form .ui.form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,32 +68,42 @@ export const Container = styled.div`
   }
 
   /* Inputs */
-  .form .email input {
-    width: 200px;
+  .form .ui.form div {
+    width: 500px;
   }
 
-  .form .cpf input,
-  .form .cep input,
-  .form .numero input {
-    width: 120px;
+  @media (max-width: 570px) {
+    .form .ui.form div {
+      width: 375px;
+    }
   }
 
-  .form .bairro input,
-  .form .cidade input {
-    width: 250px;
+  @media (max-width: 444px) {
+    .form .ui.form div {
+      width: 292px;
+    }
   }
 
-  /* Labels */
-  .form div label {
-    margin-right: 20px;
+  @media (max-width: 320px) {
+    .form .ui.form div {
+      width: 242px;
+    }
   }
 
   /* Botões cadastrar e editar */
-  .form form .buttons {
+  .buttons {
     display: flex;
+    justify-content: center;
   }
 
-  .form form .buttons button {
+  @media (max-width: 320px) and (max-height: 568px) {
+    .buttons {
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .buttons button {
     height: 35px;
     border-radius: 8px;
     border-style: none;
@@ -70,18 +114,25 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
-  .form form .buttons button:hover {
+  .buttons button:hover {
     background-color: black;
   }
 
   /* Cadastrar */
-  .form form .buttons #cadastrar {
+  .buttons #cadastrar {
     margin-right: 20px;
     width: 120px;
   }
 
+  @media (max-width: 320px) and (max-height: 568px) {
+    .buttons #cadastrar {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
   /* Editar */
-  .form form .buttons #editar {
+  .buttons #editar {
     width: 70px;
   }
 `;
