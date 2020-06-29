@@ -2,15 +2,39 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  height: 100vh; /*ocupa toda a tela*/
 
   .login-container {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  @media (max-width: 538px) {
+    .login-container {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .login-container img {
+    height: 200px;
+    margin-bottom: 30px;
+  }
+
+  .login-container form {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 120px;
+  }
+
+  .login-container form .email-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .login-container form .email {
@@ -32,7 +56,7 @@ export const Container = styled.div`
   /* Botão entrar */
   .login-container form button {
     font-size: 20px;
-    display: flex;
+    /* display: flex; */
     color: white;
     margin-top: 30px;
     width: 120px;
@@ -40,8 +64,6 @@ export const Container = styled.div`
     border-radius: 8px;
     border-style: none;
     background-color: gray;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     transition: background-color 0.8s;
   }
