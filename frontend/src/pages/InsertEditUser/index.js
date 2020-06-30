@@ -148,6 +148,7 @@ export default function InsertEditUser () {
 
           <Form onSubmit={handleRegister}>
             <Form.Input
+              inputProps={{ "data-testid": "nameInput" }}
               fluid label="Nome"
               type="text"
               name="nome"
@@ -160,6 +161,7 @@ export default function InsertEditUser () {
 
             <Form.Group inline widths="equal">
               <Form.Input
+                inputProps={{ "data-testid": "cpfInput" }}
                 fluid label="CPF"
                 type="text"
                 name="cpf"
@@ -177,6 +179,7 @@ export default function InsertEditUser () {
               />
 
               <Form.Input
+                inputProps={{ "data-testid": "emailInput" }}
                 fluid label="E-mail"
                 icon="mail"
                 iconPosition="left"
@@ -191,6 +194,7 @@ export default function InsertEditUser () {
 
             <Form.Group inline widths="equal">
               <Form.Input
+                inputProps={{ "data-testid": "senhaInput" }}
                 fluid label="Senha"
                 icon="lock"
                 iconPosition="left"
@@ -203,6 +207,7 @@ export default function InsertEditUser () {
               />
 
               <Form.Input
+                inputProps={{ "data-testid": "cepInput" }}
                 fluid label="CEP"
                 type="text"
                 name="cep"
@@ -223,6 +228,7 @@ export default function InsertEditUser () {
 
             <Form.Group inline widths="equal">
               <Form.Input
+                inputProps={{ "data-testid": "ruaInput" }}
                 fluid label="Rua"
                 type="text"
                 name="rua"
@@ -233,6 +239,7 @@ export default function InsertEditUser () {
               />
 
               <Form.Input
+                inputProps={{ "data-testid": "numeroInput" }}
                 fluid label="Número"
                 type="number"
                 name="numero"
@@ -245,6 +252,7 @@ export default function InsertEditUser () {
 
             <Form.Group inline widths="equal">
               <Form.Input
+                inputProps={{ "data-testid": "bairroInput" }}
                 fluid label="Bairro"
                 type="text"
                 name="bairro"
@@ -255,6 +263,7 @@ export default function InsertEditUser () {
               />
 
               <Form.Input
+                inputProps={{ "data-testid": "cidadeInput" }}
                 fluid label="Cidade"
                 type="text"
                 name="cidade"
