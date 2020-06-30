@@ -34,6 +34,7 @@ export default function Table ({ columns, data }) {
   return (
     <>
       <Input
+        data-testid="filterInput"
         icon="search"
         type="text"
         value={filterInput}
