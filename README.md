@@ -44,6 +44,7 @@
 
 - [React](https://pt-br.reactjs.org/)
 - [Create React App](https://pt-br.reactjs.org/docs/create-a-new-react-app.html#create-react-app) - Criação do ambiente React
+- [Paleta de cores utilizada](https://coolors.co/424874-dcd6f7-a6b1e1-cacfd6-d6e5e3)
 - [react-router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router) - Gerenciamento de rotas
 - [styled-components](https://styled-components.com/)
 - [SemanticUI](http://react.semantic-ui.com/) - Biblioteca de componentes UI
@@ -55,6 +56,7 @@
 - [Remask](https://github.com/brunobertolini/remask) - Biblioteca para usar máscaras em campos
 - [Implementação ViaCEP](https://github.com/srbrunomelo/api-cep-react/blob/master/src/pages/Start/index.js) - Exemplo que me baseei para aplicar a funcionalidade de preenchimento automático do endereço a partir do CEP digitado
 - [Verificação de e-mail](https://www.devmedia.com.br/validando-e-mail-em-inputs-html-com-javascript/26427)
+- [Jest](https://jestjs.io/docs/en/tutorial-react) - Biblioteca Jest
 
 ## ⌛ Começando
 
